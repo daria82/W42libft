@@ -6,10 +6,22 @@
 /*   By: mstroeva <mstroeva@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 15:21:39 by mstroeva          #+#    #+#             */
-/*   Updated: 2021/11/17 09:41:07 by mstroeva         ###   ########.fr       */
+/*   Updated: 2021/12/12 14:00:54 by mstroeva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/*
+Function name ft_strjoin
+Prototype char *ft_strjoin(char const *s1, char const *s2);
+Turn in files -
+Parameters #1. The prefix string.
+#2. The suffix string.
+Return value The new string. NULL if the allocation fails.
+External functs. malloc
+Description Allocates (with malloc(3)) and returns a new
+string, which is the result of the concatenation
+of ’s1’ and ’s2’.
+*/
 #include "libft.h"
 
 char	*ft_strjoin(char const *s1, char const *s2)

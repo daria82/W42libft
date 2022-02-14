@@ -6,7 +6,7 @@
 /*   By: mstroeva <mstroeva@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/21 13:54:18 by mstroeva          #+#    #+#             */
-/*   Updated: 2021/12/09 14:28:01 by mstroeva         ###   ########.fr       */
+/*   Updated: 2021/12/12 13:58:31 by mstroeva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,20 @@ Description			Applies the function f to each character of the
 */
 #include "libft.h"
 
-void	ft_striteri(char *s, void (*f)(unsigned int, char *))
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
+	unsigned int	len;
 	unsigned int	i;
 
+	len = 0;
 	i = 0;
-	while (s[i] != '\0')
+	if (s != NULL || f != NULL)
 	{
-		f(i, &s[i]);
-		i++;
+		len = (unsigned int)ft_strlen(s);
+		while (i < len)
+		{
+			(*f)(i, (s + i));
+			i++;
+		}
 	}
 }

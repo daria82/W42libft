@@ -6,7 +6,7 @@
 /*   By: mstroeva <mstroeva@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/29 11:05:18 by mstroeva          #+#    #+#             */
-/*   Updated: 2021/12/07 21:21:58 by mstroeva         ###   ########.fr       */
+/*   Updated: 2021/12/12 10:58:37 by mstroeva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@ checks for a digit (0 through 9)
 The values returned are nonzero if the character c falls  into  the
 tested class, and zero if not.
 */
-#include <unistd.h>
+#include "libft.h"
 
 int	ft_isdigit(int c)
 {

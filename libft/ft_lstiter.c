@@ -1,31 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mstroeva <mstroeva@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/03 13:57:02 by mstroeva          #+#    #+#             */
-/*   Updated: 2021/12/12 10:59:08 by mstroeva         ###   ########.fr       */
+/*   Created: 2021/12/17 14:49:07 by mstroeva          #+#    #+#             */
+/*   Updated: 2021/12/17 18:45:06 by mstroeva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
-Function name ft_putstr_fd
-Prototype void ft_putstr_fd(char *s, int fd);
+Prototype void ft_lstiter(t_list *lst, void (*f)(void *));
 Turn in files -
-Parameters #1. The string to output.
-#2. The file descriptor on which to write.
+Parameters #1. The adress of a pointer to an element.
+#2. The adress of the function used to iterate on the list.
 Return value None
-External functs. write
-Description Outputs the string ’s’ to the given file
-descriptor.
+External functs. None
+Description Iterates the list ’lst’ and applies the function
+’f’ to the content of each element.
 */
 #include "libft.h"
 
-void	ft_putstr_fd(char *s, int fd)
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	if (s == NULL)
-		return ;
-	write(fd, s, ft_strlen(s));
+	if (lst && f)
+	{
+		while (lst != NULL)
+		{
+			f(lst->content);
+			lst = lst->next;
+		}
+	}
 }

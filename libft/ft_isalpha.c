@@ -6,7 +6,7 @@
 /*   By: mstroeva <mstroeva@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/29 11:03:21 by mstroeva          #+#    #+#             */
-/*   Updated: 2021/12/07 21:21:09 by mstroeva         ###   ########.fr       */
+/*   Updated: 2021/12/12 10:58:34 by mstroeva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ The  values  returned  are nonzero if the
 character c falls into the tested  class,
 and zero if not.
 */
-#include <unistd.h>
+#include "libft.h"
 
 int	ft_isalpha(int c)
 {

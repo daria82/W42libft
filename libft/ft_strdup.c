@@ -6,10 +6,20 @@
 /*   By: mstroeva <mstroeva@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/19 14:47:43 by mstroeva          #+#    #+#             */
-/*   Updated: 2021/11/17 09:51:35 by mstroeva         ###   ########.fr       */
+/*   Updated: 2021/12/12 14:00:00 by mstroeva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/*
+DESCRIPTION
+       The strdup() function returns a pointer to a new string which is
+       a duplicate of the string s.  Memory for the new string  is  ob‐
+       tained with malloc(3), and can be freed with free(3).
+RETURN VALUE
+       On success, the strdup() function returns a pointer to  the  du‐
+       plicated  string.   It  returns  NULL if insufficient memory was
+       available, with errno set to indicate the cause of the error.
+*/
 #include "libft.h"
 
 char	*ft_strdup(const char *s)

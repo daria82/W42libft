@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mstroeva <mstroeva@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/03 13:57:02 by mstroeva          #+#    #+#             */
-/*   Updated: 2021/12/12 10:59:08 by mstroeva         ###   ########.fr       */
+/*   Created: 2021/12/16 22:06:12 by mstroeva          #+#    #+#             */
+/*   Updated: 2021/12/17 20:24:45 by mstroeva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-Function name ft_putstr_fd
-Prototype void ft_putstr_fd(char *s, int fd);
+/*Function name ft_lstadd_front
+Prototype void ft_lstadd_front(t_list **lst, t_list *new);
 Turn in files -
-Parameters #1. The string to output.
-#2. The file descriptor on which to write.
+Parameters #1. The address of a pointer to the first link of a list.
+#2. The address of a pointer to the element to be
+added to the list.
 Return value None
-External functs. write
-Description Outputs the string ’s’ to the given file
-descriptor.
+External functs. None
+Description Adds the element ’new’ at the beginning of the
+list.
 */
 #include "libft.h"
 
-void	ft_putstr_fd(char *s, int fd)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	if (s == NULL)
-		return ;
-	write(fd, s, ft_strlen(s));
+	if (lst && new)
+	{
+		new->next = *lst;
+		*lst = new;
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: mstroeva <mstroeva@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/17 17:11:28 by mstroeva          #+#    #+#             */
-/*   Updated: 2021/11/20 15:52:36 by mstroeva         ###   ########.fr       */
+/*   Updated: 2021/12/12 10:58:41 by mstroeva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,78 +24,66 @@ Description 		Allocates (with malloc(3)) and returns a string representing
 
 #include "libft.h"
 
-static char	*reverse(char *str)
+static int	ft_len(long nn)
 {
-	int		len;
-	size_t	i;
-	char	finn[12];
+	int	len;
 
-	len = ft_strlen(str);
-	i = 0;
-	while (len > 0)
-	{
-		finn[i] = str[len - 1];
-		len--;
-		i++;
+	len = 0;
+	if (nn <= 9)
+		return (++len);
+	while (nn > 0)
+	{	
+		nn = nn / 10;
+		len++;
 	}
-	finn[i] = '\0';
-	i = 0;
-	while (i <= (ft_strlen(str) + 1))
-	{
-		str[i] = finn[i];
-		i++;
-	}
-	str[i] = '\0';
-	return (str);
+	return (len);
 }
 
-static char	*mod(long nn, int sign, char *str)
+static char	*ft_divider(int len, char *nnn, long nn)
 {
-	long	mod;
+	long	a;
 	int		i;
-	char	final[12];
 
+	a = 1;
+	while ((len - 1) > 0)
+	{
+		a = a * 10;
+		len--;
+	}
 	i = 0;
-	while (nn > 0)
+	while (a > 0)
 	{
-		mod = nn % 10;
-		final[i] = (char)mod + 48;
-		nn = nn / 10;
+		*(nnn + i) = ((nn / a) + '0');
+		nn = nn % a;
+		a = a / 10;
 		i++;
 	}
-	if (sign == -1)
-	{
-		final[i] = '-';
-		i++;
-	}
-	final[i] = '\0';
-	ft_strlcat(str, final, (ft_strlen(final) + 1));
-	str = reverse(str);
-	return (str);
+	nnn[i] = '\0';
+	return (nnn);
 }
 
 char	*ft_itoa(int n)
 {
 	long	nn;
-	char	*str;
+	char	*nnn;
 	int		sign;
+	int		len;
+	int		i;
 
-	sign = 0;
-	str = (char *)malloc(12);
-	if (!str)
-		return (NULL);
 	nn = (long)n;
-	if (nn == 0)
-	{
-		str[0] = '0';
-		str [1] = '\0';
-		return (str);
-	}
+	sign = 0;
 	if (nn < 0)
 	{
-		nn = -1 * nn;
-		sign = -1;
+		sign = 1;
+		nn = nn * -1;
 	}
-	str = mod(nn, sign, str);
-	return (str);
+	len = ft_len(nn);
+	nnn = (char *)malloc(sign + len + 1);
+	if (NULL == nnn)
+		return (nnn);
+	i = 0;
+	if (sign)
+		nnn[i++] = '-';
+	ft_divider(len, &nnn[i], nn);
+	return (nnn);
 }
